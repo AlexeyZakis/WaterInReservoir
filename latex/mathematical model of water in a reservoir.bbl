@@ -1,0 +1,37 @@
+\begin{thebibliography}{1}
+\def\selectlanguageifdefined#1{
+\expandafter\ifx\csname date#1\endcsname\relax
+\else\language\csname l@#1\endcsname\fi}
+\ifx\undefined\url\def\url#1{{\small #1}}\else\fi
+\ifx\undefined\BibUrl\def\BibUrl#1{\url{#1}}\else\fi
+\ifx\undefined\BibDoi\def\BibDoi#1{DOI:
+  \href{https://doi.org/#1}{\detokenize{#1}}}\else\fi
+\ifx\undefined\BibAnnote\long\def\BibAnnote#1{}\else\fi
+\ifx\undefined\BibEmph\def\BibEmph#1{\emph{#1}}\else\fi
+
+\bibitem{IrkutskReservoir}
+\selectlanguageifdefined{english}
+Данные об Иркутском водохранилище. ---
+\newblock Дата доступа: (11.11.2025).
+  \BibUrl{https://shorturl.at/XIjcg}.
+
+\bibitem{Precipitation}
+\selectlanguageifdefined{english}
+Данные об осадках в Иркутске. ---
+\newblock Дата доступа: (11.11.2025).
+  \BibUrl{https://en.climate-data.org/asia/russian-federation/irkutsk-oblast/irkutsk-473/}.
+
+\bibitem{Evaporation}
+\selectlanguageifdefined{english}
+Оценка испарений над водоёмами. ---
+\newblock Дата доступа: (11.11.2025).
+  \BibUrl{https://journals.ametsoc.org/view/journals/mwre/149/6/MWR-D-20-0421.1.xml}.
+
+\bibitem{IrkutskReservoirWaterLevel}
+\selectlanguageifdefined{english}
+Данные об уровне воды в Иркутском
+  водохранилище. ---
+\newblock Дата доступа: (11.11.2025).
+  \BibUrl{https://rushydro.ru/informer/}.
+
+\end{thebibliography}

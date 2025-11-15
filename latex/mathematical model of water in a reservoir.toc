@@ -1,0 +1,7 @@
+\babel@toc {russian}{}\relax 
+\contentsline {section}{\numberline {1}Введение}{3}{section.1}%
+\contentsline {section}{\numberline {2}Физическая постановка задачи}{3}{section.2}%
+\contentsline {section}{\numberline {3}Вывод основного уравнения модели}{4}{section.3}%
+\contentsline {section}{\numberline {4}Сравнение модели с реальными данными}{5}{section.4}%
+\contentsline {section}{\numberline {5}Заключение}{6}{section.5}%
+\contentsline {section}{{\cyrillictext \CYRS \cyrp \cyri \cyrs \cyro \cyrk \ \cyrl \cyri \cyrt \cyre \cyrr \cyra \cyrt \cyru \cyrr \cyrery }}{7}{section*.2}%

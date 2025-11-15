@@ -1,0 +1,362 @@
+\documentclass[oneside,senior,etd]{BYUPhys}
+
+\usepackage{cmap} % Для корректной кодировки в pdf
+\usepackage[utf8]{inputenc}
+\usepackage{rotating}
+
+\usepackage[russian]{babel}
+\usepackage{amsfonts} % Пакеты для математических символов и теорем
+\usepackage{amstext}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx} % Пакеты для вставки графики
+\usepackage{subfig}
+\usepackage{color}
+\usepackage[unicode]{hyperref}
+\usepackage[nottoc]{tocbibind} % Для того, чтобы список литературы отображался в оглавлении
+\usepackage{verbatim} % Для вставок заранее подготовленного текста в режиме as-is
+\usepackage{listings}
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usetikzlibrary{arrows,positioning}
+\usepackage{adjustbox}
+
+\usepackage{makecell}
+\usepackage{booktabs}
+\usepackage{boldline}
+
+\usepackage{xcolor}
+\usepackage{soul}
+\usepackage{url}
+\usepackage{multirow}
+\usepackage{amsmath}
+
+\usepackage{pifont}
+\usepackage{indentfirst} % Делать отступ в начале первого параграфа
+
+\usepackage{caption}
+
+\usepackage{algpseudocode}
+
+\usepackage{placeins}
+
+\usepackage{perpage}
+\MakePerPage{footnote} % Сброс счётчиков сносок для каждой страницы
+
+% Общие параметры листингов
+\lstset{
+	%frame=TB,
+	showstringspaces=false,
+	tabsize=4,
+	basicstyle=\linespread{1.0}\tt\small, % делаем листинги компактнее
+	breaklines=false,
+	texcl=true, % русские буквы в комментариях
+	captionpos=b,
+	aboveskip=\baselineskip,
+	commentstyle=\tt
+}
+
+% Стиль кода
+
+\lstloadlanguages{C, C++, csh}
+
+\definecolor{backgroundColor}{rgb}{0.93, 0.93, 0.93}
+\definecolor{commentColor}{rgb}{0.4, 0.4, 0.6}
+\definecolor{keyWordsColor}{rgb}{0.4, 0.4, 1}
+\definecolor{identifiersColor}{rgb}{0.4, 0.2, 0.6}
+
+\lstset{
+	language=csh,
+	basicstyle=\footnotesize\ttfamily,
+	numbers=left,
+	numberstyle=\tiny,
+	numbersep=5pt,
+	tabsize=2,
+	extendedchars=true,
+	breaklines=true,
+	frame=b,
+	stringstyle=\color{blue}\ttfamily,
+	showspaces=false,
+	showtabs=false,
+	xleftmargin=17pt,
+	framexleftmargin=17pt,
+	framexrightmargin=5pt,
+	framexbottommargin=4pt,
+	commentstyle=\color{commentColor},
+	morecomment=[l]{//}, %use comment-line-style!
+	morecomment=[s]{/*}{*/}, %for multiline comments
+	showstringspaces=false,
+	morekeywords={ abstract, event, new, struct,
+		as, explicit, null, switch,
+		base, extern, object, this,
+		bool, false, operator, throw,
+		break, finally, out, true,
+		byte, fixed, override, try,
+		case, float, params, typeof,
+		catch, for, private, uint,
+		char, foreach, protected, ulong,
+		checked, goto, public, unchecked,
+		class, if, readonly, unsafe,
+		const, implicit, ref, ushort,
+		continue, in, return, using,
+		decimal, int, sbyte, virtual,
+		default, interface, sealed, volatile,
+		delegate, internal, short, void,
+		do, is, sizeof, while,
+		double, lock, stackalloc,
+		else, long, static,
+		enum, namespace, string},
+	keywordstyle=\color{keyWordsColor},
+	identifierstyle=\color{identifiersColor},
+	backgroundcolor=\color{backgroundColor},
+	escapeinside={(*}{*)} % Разрешаем вставку команд LaTeX между "(*" и "*)"
+}
+
+
+%\addto\captionsrussian{ % т.к. babel переопределяет \lstlistingname
+	%	\renewcommand{\lstlistingname}{Пример кода} % Подписи листингов
+	%	\renewcommand{\lstlistlistingname}{Список примеров кода} % Подписи списка листингов
+	%}
+
+\newcommand{\todo}[1]{\textcolor{red}{#1}}
+
+\usepackage[normalem]{ulem} % Чтобы зачёркивать текст
+
+\definecolor{editColor}{RGB}{164, 46, 255}
+\newcommand{\lastAdded}[1]{\textcolor{editColor}{\textbf{#1}}} % Чтобы отмечать добавленный текст в последней версии
+\newcommand{\lastRemoved}[1]{\textcolor{editColor}{\sout{#1}}} % Чтобы отмечать удалнный текст в последней версии
+
+% Цвет текста для акцентирования внимания
+\definecolor{importantTextColor}{rgb}{0.8, 0.2, 0.2}
+
+\usepackage{tcolorbox}
+
+\newcommand{\highlight}[1]{%
+	\textcolor{importantTextColor}{\fontsize{12}{11}\ttfamily\linespread{1.0}#1}%
+}
+
+\usepackage[table]{colortbl} % Для использования цвета в таблицах
+
+% Определение новой команды для форматирования определений терминов
+\newcommand{\definition}[2]{\textbf{#1} --- #2\par}
+
+% DEBUG
+% \usepackage{showframe}
+
+\Faculty{Факультет вычислительной математики и кибернетики}
+\Chair{Кафедра алгоритмических языков}
+% Лаборатория
+% \Lab{~}
+\Year{2025}
+\Month{Ноябрь}
+\City{Москва}
+\AuthorText{Автор:}
+\Author{Плотников Алексей Сергеевич}
+\AuthorEng{Alexey Plotnikov}
+\AcadGroup{134}
+
+\TitleTop{Математическая модель изменения}
+% Раскомментируйте, если нужны еще строчки названия
+\TitleMiddle{уровня воды в водохранилище}
+%\TitleBottom{с помощью статического анализа}
+% Uncomment if you need English title
+% \TitleTopEng{Thesis theme, first line}
+% \TitleMiddleEng{Thesis theme, second line}
+% \TitleBottomEng{Thesis theme, third line}
+
+\docname{Реферат}
+\Advisor{Сычугов Дмитрий Юрьевич}
+\AdvisorDegree{}
+% Раскомментируйте, чтобы добавить научного консультанта
+%\Consultant{Игнатьев Валерий Николаевич}
+%\ConsultantDegree{к.ф.-м.н.\\}
+
+% Закомментируйте, если аннотация не нужна
+%\Abstract{}
+% Раскомментируйте, если нужна английская аннотация
+% \AbstractEng{Abstract in English}
+
+% Раскомментируйте, чтобы написать благодарности
+% \Acknowledgments{Благодарности.}
+
+%%%% DON'T change this. It is here because .sty does not support cyrillic cp properly %%%%
+\TitlePageText{Титульная страница}
+\University{Московский государственный университет имени М.В.Ломоносова}
+\GrText{гр.}
+\AdvisorText{Преподаватель}
+\ConsultantText{Научный консультант}
+\AbstractText{Аннотация}
+\AcknowledgmentsText{Благодарности}
+\ListingText{Листинг}
+\AlgorithmText{Алгоритм}
+
+% Set PDF title and author
+\hypersetup{
+	pdftitle={\PDFTitle},
+	pdfauthor={\PDFAuthor}
+}
+
+\begin{document}
+	
+	\fixmargins
+	\makepreliminarypages
+	
+	\oneandhalfspace
+	
+	\pdfbookmark[section]{\contentsname}{toc}
+	\tableofcontents
+	
+	\clearpage
+	
+	\section{Введение}
+	
+	Целью данной работы является построение и анализ математической модели, описывающей изменение уровня воды в водохранилище. Водохранилище представляет собой искусственный водоём, объём воды в котором зависит от множества физических процессов:
+	
+	\begin{itemize}
+		\item приток воды из питающих рек и подземных источников;
+		\item отток воды через плотину, водослив или гидротурбины;
+		\item атмосферные осадки на поверхность водоёма;
+		\item испарение воды с открытой поверхности;
+		\item фильтрационные потери через почву.
+	\end{itemize}
+	
+	\section{Физическая постановка задачи}
+	
+	Пусть $V(t)$~--- объём воды в водохранилище в момент времени $t$. Тогда общий баланс масс можно записать в виде:
+	\begin{equation}
+		\frac{dV}{dt} = Q_{\text{in}}(t) - Q_{\text{out}}(t) 
+		+ Q_{\text{atm}}(t) - Q_{\text{loss}}(t).
+		\label{eq:mass_balance}
+	\end{equation}
+	
+	Здесь:
+	\begin{itemize}
+		\item $Q_{\text{in}}(t)$~--- приток воды в водохранилище;
+		\item $Q_{\text{out}}(t)$~--- отток через плотину;
+		\item $Q_{\text{atm}}(t)$~--- влияние атмосферы (осадки минус испарение);
+		\item $Q_{\text{loss}}(t)$~--- фильтрационные потери (количество воды уходящее через почву).
+	\end{itemize}
+	
+	Фильтрационные потери зависят от уровня воды $h(t)$:
+	\begin{equation}
+		Q_{\text{loss}}(t) = k_f h(t),
+		\label{eq:filtration}
+	\end{equation}
+	где $k_f$~--- коэффициент фильтрации.
+	
+	Отток воды \(Q_{\text{out}}(t)\), в основном, происходит через плотину. В общем случае расход может включать
+	как контролируемый сброс \(Q_{\text{ctrl}}(t)\) через затворы или турбины, так и естественный перелив \(Q_{\text{spill}}(t)\):
+	
+	\begin{equation}
+		Q_{\text{out}}(t) = Q_{\text{ctrl}}(t) + Q_{\text{spill}}(t).
+	\end{equation}
+	
+	\begin{itemize}
+		\item $Q_{\text{ctrl}}(t)$ \text{ --- управляемый расход воды заданный оператором станции};
+		\item $Q_{\text{spill}}(t)$ \text{ ---  поток воды сбрасываемый при привышении уровня воды}.
+	\end{itemize}
+	
+	Влияние атмосферы определяется площадью зеркала водоёма $A(t)$:
+	\begin{equation}
+		Q_{\text{atm}}(t) = A(t)\bigl(P(t) - E(t)\bigr),
+		\label{eq:atm}
+	\end{equation}
+	где $P(t)$~--- интенсивность осадков, \\
+	$E(t)$~--- интенсивность испарения.
+	
+	Пусть зависимость объёма водохранилища от уровня воды аппроксимируется степенной функцией:
+	\begin{equation}
+		V(h)=\alpha h^n.
+		\label{eq:V_h}
+	\end{equation}
+	
+	Тогда площадь зеркала определяется:
+	\begin{equation}
+		A(h)=\frac{dV}{dh}=\alpha n h^{n-1}.
+		\label{eq:A_h}
+	\end{equation}
+	
+	Подставляя \eqref{eq:A_h} в выражение \eqref{eq:atm}, получим:
+	\begin{equation}
+		Q_{\text{atm}}(t)=\alpha n h^{n-1}\bigl(P(t)-E(t)\bigr).
+		\label{eq:atm2}
+	\end{equation}
+	
+	\section{Вывод основного уравнения модели}
+	
+	Подставим выражения \eqref{eq:atm2}, \eqref{eq:filtration} в баланс \eqref{eq:mass_balance} и учтём \eqref{eq:V_h}. Производная объёма:
+	
+	\begin{equation}
+		\frac{dV}{dt}=\frac{d(\alpha h^n)}{dt}
+		=\alpha n h^{n-1}\frac{dh}{dt}.
+	\end{equation}
+	
+	Тогда основное уравнение принимает вид:
+	\begin{equation}
+		\alpha n h^{n-1}\frac{dh}{dt} =
+		Q_{\text{in}}(t) - Q_{\text{ctrl}}(t)
+		- Q_{\text{spill}}(t)
+		+\alpha n h^{n-1}[P(t)-E(t)]
+		-k_f h.
+	\end{equation}
+	
+	После деления на $\alpha n h^{n-1}$ получим уравнение динамики уровня воды:
+	\begin{equation}
+		\frac{dh}{dt}=
+		\frac{Q_{\text{in}}(t) - Q_{\text{ctrl}}(t) - Q_{\text{spill}}(t) - k_f h}{\alpha n h^{n-1}}
+		+[P(t)-E(t)].
+		\label{eq:main}
+	\end{equation}
+	
+	\section{Сравнение модели с реальными данными}
+	
+	Для оценки корректности модели рассмотрим иркутское водохранилище
+	
+	Площадь водохранилища: $ A_0 = 154~\text{км}^2$~\cite{IrkutskReservoir}
+	
+	Другие параметры:
+	\begin{itemize}
+		\item Ежемесячное количество осадков~\cite{Precipitation}
+		\item Ежемесячная величина испарения~\cite{Evaporation}
+		\item Естественном приток воды~\cite{IrkutskReservoirWaterLevel}
+		\item Средний расход воды~\cite{IrkutskReservoirWaterLevel}
+	\end{itemize}
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=\linewidth]{results.png}
+		\caption{Сравнение модели с реальными данными}
+		\label{fig:results}
+	\end{figure}
+	
+	\begin{itemize}
+		\item Максимальное отклонение: 10.41см
+		\item Стандартное отклонение: 3.57см
+		\item Среднеквадратичная ошибка: 3.59см
+	\end{itemize}
+	
+	Отклонение от реальных данным может быть вызвано:
+	\begin{itemize}
+		\item Использование усреднённых значений осадков и испарения
+		\item Аппроксимация объёма воды степенной функцией от высоты
+	\end{itemize}
+	
+	\section{Заключение}
+	
+	В работе построена математическая модель изменения уровня воды в водохранилище. Учтены основные физические процессы: приток, отток, осадки, испарение и фильтрация. Получено дифференциальное уравнение, описывающее динамику уровня воды.
+	
+	Полученная модель была сравнена с реальными данными Иркутского водохранилища. Среднеквадратичная ошибка модели от реальных данных составила 3.59см.
+	
+	\bibliographystyle{gost780u.bst} % Для соответствия требованиям об оформлении списка литературы
+	\raggedright
+	\bibliography{references}
+	
+	% Раскомментируйте, если нужно приложение
+	% \appendix
+	
+	% \cleardoublepage \phantomsection
+	% \section*{Приложение}
+	% \addcontentsline{toc}{section}{Приложение}
+	
+\end{document}
